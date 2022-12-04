@@ -1,8 +1,8 @@
-import Users from "../models/UserModel.js";
-import bcrypt from "bcrypt"
-import jwt from "jsonwebtoken"
+const Users = require("../models/UserModel");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken"); 
 
-export const getUsers = async (req, res) => {
+const getUsers = async (req, res) => {
     try {
         const users = await Users.findAll({
             attributes: ['id', 'name', 'username', 'email']
@@ -13,7 +13,7 @@ export const getUsers = async (req, res) => {
     }
 }
 
-export const Register = async (req, res) => {
+const Register = async (req, res) => {
     const { name, email, username, password, confPassword } = req.body;
     if (password !== confPassword) return res.status(400).json({ msg: "Password doesnt match!" })
     const salt = await bcrypt.genSalt() //bcrypt
@@ -32,7 +32,7 @@ export const Register = async (req, res) => {
     }
 }
 
-export const Login = async (req, res) => {
+const Login = async (req, res) => {
     try {
         const user = await Users.findAll({
             where: {
@@ -72,3 +72,5 @@ export const Login = async (req, res) => {
         res.status(404).json({ msg: "Username not found" })
     }
 }
+
+module.exports = { getUsers, Login, Register }

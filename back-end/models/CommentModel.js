@@ -1,28 +1,44 @@
-import { Sequelize } from "sequelize";
-import db from "../config/Database.js";
-
-const { DataTypes } = Sequelize;
-
-// Schema table Comments
-const Comments = db.define('comments', {
-    user_id: {
-        type: DataTypes.INTEGER
-    },
-    post_id: {
-        type: DataTypes.INTEGER
-    },
-    comment: {
-        type: DataTypes.STRING
-    },
-    refresh_token: {
-        type: DataTypes.TEXT
+'use strict';
+const { Model } = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Comments extends Model {
+    static associate(models) {
+      // define association here
     }
-}, {
-    freezeTableName: true
-});
+  }
 
-(async () => {
-    await db.sync();
-})();
-
-export default Comments;
+  Comments.init(
+    {
+        comment_id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+        },
+        user_id: {
+            type: DataTypes.INTEGER
+        },
+        post_id: {
+            type: DataTypes.INTEGER
+        },
+        comment: {
+            type: DataTypes.STRING
+        },
+    },
+    {
+      sequelize,
+      modelName: 'Comments',
+    }
+  );
+  Comments.associate = function (models) {
+    models.Comments.hasMany(models.Users, {
+      foreignKey: 'user_id',
+      onDelete: 'cascade',
+    });
+  };
+  Comments.associate = function (models) {
+    models.Comments.hasMany(models.Posts, {
+      foreignKey: 'post_id',
+      onDelete: 'cascade',
+    });
+  };
+  return Comments;
+};
