@@ -1,11 +1,18 @@
-const Users = require("../models/UserModel");
+const {
+    Posts,
+    Comments,
+    Likes,
+    sequelize,
+    Sequelize,
+    Users,
+  } = require('../models');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken"); 
 
 const getUsers = async (req, res) => {
     try {
         const users = await Users.findAll({
-            attributes: ['id', 'name', 'username', 'email']
+            attributes: ['user_id', 'name', 'username', 'email']
         })
         res.json(users)
     } catch (error) {
@@ -34,32 +41,38 @@ const Register = async (req, res) => {
 
 const Login = async (req, res) => {
     try {
-        const user = await Users.findAll({
+        const users = await Users.findOne({
             where: {
                 username: req.body.username
             }
         })
-        const match = await bcrypt.compare(req.body.password, user[0].password)
+
+        const user = users.dataValues;
+        
+        const match = await bcrypt.compare(req.body.password, user.password);
         if (!match) return res.status(400).json({ msg: "Wrong Password" });
 
-        const userId = user[0].id
-        const username = user[0].username
-        const name = user[0].name
-        const email = user[0].email
+        const user_id = user.user_id;
+        const username = user.username;
+        const name = user.name;
+        const email = user.email;
 
-        const accessToken = jwt.sign({ userId, username, name, email }, process.env.ACCESS_TOKEN_SECRET, {
+
+        const accessToken = jwt.sign({ user_id, username, name, email }, process.env.ACCESS_TOKEN_SECRET, {
             expiresIn: '120s'
-        })
+        });
 
-        const refreshToken = jwt.sign({ userId, username, name, email }, process.env.REFRESH_TOKEN_SECRET, {
+        const refreshToken = jwt.sign({ user_id, username, name, email }, process.env.REFRESH_TOKEN_SECRET, {
             expiresIn: '1d'
-        })
+        });
+
 
         await Users.update({ refresh_token: refreshToken }, {
             where: {
-                id: userId
+                user_id: user_id
             }
-        })
+        });
+
 
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true, //it will not show in client
