@@ -5,9 +5,16 @@
 }
 
 .navbar{
-    border-right: 1px solid grey;
+    border-right: 1px solid var(--ig-border);
     flex: 0.2;
     /* margin-top: 20px; */
     padding-left: 10px;
     padding-right: 20px;
+    position: fixed;
+    height: 100vw;
+}
+
+.NavbarOption[text=More]{
+    position: absolute;
+    bottom: 0px;
 }
