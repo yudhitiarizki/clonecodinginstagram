@@ -1,0 +1,17 @@
+.home {
+    display: flex;
+    overflow-y: scroll;
+}
+
+.middle-section{
+    flex: 0.6;
+    min-width: 500px;
+    margin-left: 140px;
+    margin-right: 15px;
+    /* max-width: 510px; */
+}
+.right-section{
+    margin-left: 15px;
+    margin-right: 50px;
+    flex: 0.3;
+}
