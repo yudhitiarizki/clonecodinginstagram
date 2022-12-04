@@ -1,13 +1,23 @@
 {
-  "name": "my-shop",
+  "name": "clonecodinginstagram",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yudhitiarizki/clonecodinginstagram.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yudhitiarizki/clonecodinginstagram/issues"
+  },
+  "homepage": "https://github.com/yudhitiarizki/clonecodinginstagram#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
