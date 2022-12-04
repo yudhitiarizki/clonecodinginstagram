@@ -6,3 +6,10 @@
   padding: 0 5px;
   min-width: 250px;
 }
+
+body{
+  --ig-background: #FAFAFA;
+  --ig-border: #DBDBDB;
+  --ig-button: #0095F6;
+  --ig-text: #8E8E8E;
+}

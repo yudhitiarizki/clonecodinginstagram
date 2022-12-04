@@ -14,6 +14,9 @@ const Navbar = () => {
             <NavbarOption Icon={<Heart className="iconStyle"/>} text="Notifications" />
             <NavbarOption Icon={<PlusSquare className="iconStyle"/>} text="Create" />
             <NavbarOption Icon={<Person className="iconStyle"/>} text="Profile" />
+            <br/>
+            <br/>
+            <br/>
             <NavbarOption Icon={<List className="iconStyle"/>} text="More" />
         </div>
     )

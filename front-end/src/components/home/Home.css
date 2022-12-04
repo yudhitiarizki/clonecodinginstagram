@@ -1,17 +1,118 @@
 .home {
     display: flex;
-    overflow-y: scroll;
+    background-color: var(--ig-background);
+    margin-left: 225px;
+    width: 100vw;
+    max-width: 1118px;
 }
 
 .middle-section{
-    flex: 0.6;
-    min-width: 500px;
+    /* background-color: red; */
+    margin-top: 30px;
+    width: 500px;
     margin-left: 140px;
     margin-right: 15px;
+    /* flex: 0.7; */
     /* max-width: 510px; */
 }
+
+.stories{
+    margin-bottom: 20px;
+    height: 120px;
+    background-color: white;
+    border: 1px solid var(--ig-border);
+    border-radius: 10px;
+}
+
+.card{
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--ig-border);
+    background-color: white;
+}
+
+.card-header{
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-info{
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-info>h5{
+    margin-left: 15px;
+}
+
+.avatar{
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    border: 1px solid var(--ig-border);
+}
+
+.post-more{
+    margin-right: 15px;
+}
+
+.card>img{
+    max-width: 500px;
+    /* border-radius: 10px; */
+}
+
+.btn-group{
+    display: flex;
+    justify-content:space-between;
+}
+
+.icon{
+    font-size: 20px;
+    margin: 5px 10px 0px 10px;
+}
+
+.left{
+    margin-right: 20px;
+}
+
 .right-section{
+    background-color: var(--ig-background);
+    min-width: auto;
     margin-left: 15px;
     margin-right: 50px;
-    flex: 0.3;
+}
+
+.card-body{
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 1px solid var(--ig-border);
+}
+
+.card-text{
+    color: var(--ig-text);
+}
+
+.card-footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-emoticon{
+    align-self: center;
+    font-size: 25px;
+}
+
+.card-footer>h4{
+    margin-right: 15px;
+}
+
+.user-info>input{
+    margin-left: 15px;
+    font-size: 15px;
+    border: none;
+    outline: none;
 }
