@@ -28,6 +28,7 @@ const router = express.Router();
 router.get('/users', verifyToken, getUsers)
 router.post('/users', multer({ storage }).single('avatar'), Register);
 router.post('/login', Login);
+router.post('/login', Logout);
 router.get('/token', refreshToken);
 
 router.get('/posts', verifyToken, allPosts);
