@@ -6,18 +6,18 @@ import NavbarOption from "./NavbarOption";
 const Navbar = () => {
     return (
         <div className="navbar">
-            <Instagram to="/" className="iconStyle"/>
-            <NavbarOption to="/" Icon={<HouseDoorFill className="iconStyle"/>} text="Home" />
-            <NavbarOption Icon={<Search className="iconStyle"/>} text="Search" />
-            <NavbarOption to="/explore" Icon={<Compass className="iconStyle"/>} text="Explore" />
-            <NavbarOption Icon={<Chat className="iconStyle"/>} text="Messages" />
-            <NavbarOption Icon={<Heart className="iconStyle"/>} text="Notifications" />
-            <NavbarOption Icon={<PlusSquare className="iconStyle"/>} text="Create" />
-            <NavbarOption Icon={<Person className="iconStyle"/>} text="Profile" />
+            <Instagram url="/" className="iconStyle"/>
+            <NavbarOption url="/" Icon={<HouseDoorFill className="iconStyle"/>} text="Home" />
+            <NavbarOption url="/search" Icon={<Search className="iconStyle"/>} text="Search" />
+            <NavbarOption url="/explore" Icon={<Compass className="iconStyle"/>} text="Explore" />
+            <NavbarOption url="/messages" Icon={<Chat className="iconStyle"/>} text="Messages" />
+            <NavbarOption url="/notifs" Icon={<Heart className="iconStyle"/>} text="Notifications" />
+            <NavbarOption url="/create" Icon={<PlusSquare className="iconStyle"/>} text="Create" />
+            <NavbarOption url="/profile" Icon={<Person className="iconStyle"/>} text="Profile" />
             <br/>
             <br/>
             <br/>
-            <NavbarOption Icon={<List className="iconStyle"/>} text="More" />
+            <NavbarOption url="/" Icon={<List className="iconStyle"/>} text="More" />
         </div>
     )
 };
