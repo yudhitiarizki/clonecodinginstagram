@@ -7,6 +7,7 @@ const {
   Users,
 } = require('../models');
 const Joi = require('joi');
+const jwt = require("jsonwebtoken"); 
 
 const postSchema = Joi.object({
     title: Joi.string().required(),
@@ -36,7 +37,7 @@ const allPosts = async (req, res) => {
         posts = posts.map((post) => {
           return {
             ...post,
-            likes: likes.filter((like) => like.post_id === post.id).length,
+            likes: likes.filter((like) => like.post_id === post.post_id).length,
           };
         });
         posts.sort((a, b) => b.createdAt - a.createdAt);
@@ -60,21 +61,22 @@ const addPost = async (req, res) => {
         }
   
         const { title, description, image } = resultSchema.value;
-        const { user_id } = res.locals.user;
-  
-        if (
-          !isRegexValidation(title, RE_TITLE) ||
-          isRegexValidation(title, RE_HTML_ERROR)
-        ) {
+
+        const cookie = req.cookies;
+        const Userlogin = jwt.decode(cookie.refreshToken);
+        const user_id = Userlogin.user_id;
+
+        if(!title.match(RE_TITLE) || title.match(RE_HTML_ERROR)){
           return res.status(412).json({
             errorMessage: 'The format of the post title does not match.',
           });
-        }
-        if (!isRegexValidation(description, RE_DESCRIPTION)) {
+        };
+        
+        if(!description.match(RE_DESCRIPTION) || description.match(RE_HTML_ERROR)){
           return res.status(412).json({
             errorMessage: 'The format of the post description does not match.',
           });
-        }
+        };
   
         await Posts.create({ user_id, title, description, image });
         return res.status(201).json({ message: 'You have succeeded in writing a post.' });
@@ -89,7 +91,9 @@ const addPost = async (req, res) => {
 const deletePost = async (req, res) => {
     try {
         const post_id  = req.params.post_id;
-        const { user_id } = res.locals.user;
+        const cookie = req.cookies;
+        const Userlogin = jwt.decode(cookie.refreshToken);
+        const user_id = Userlogin.user_id;
   
         const post = await Posts.findByPk(post_id);
         if (!post) {
@@ -115,4 +119,52 @@ const deletePost = async (req, res) => {
       }
 }
 
-module.exports = { allPosts, addPost, deletePost };
+const putPost = async (req, res) => {
+  try {
+    const resultSchema = postSchema.validate(req.body);
+    if (resultSchema.error) {
+      return res.status(412).json({
+        errorMessage: 'The data format is incorrect.',
+      });
+    }
+
+    const post_id  = req.params.post_id;
+    const { title, description, image } = resultSchema.value;
+    const cookie = req.cookies;
+    const Userlogin = jwt.decode(cookie.refreshToken);
+    const user_id = Userlogin.user_id;
+
+    console.log(post_id, user_id)
+
+    if(!title.match(RE_TITLE) || title.match(RE_HTML_ERROR)){
+      return res.status(412).json({
+        errorMessage: 'The format of the post title does not match.',
+      });
+    };
+    
+    if(!description.match(RE_DESCRIPTION) || description.match(RE_HTML_ERROR)){
+      return res.status(412).json({
+        errorMessage: 'The format of the post description does not match.',
+      });
+    };
+
+    const updateCount = await Posts.update(
+      { title, description, image },
+      { where: { post_id, user_id } }
+    );
+
+    if (updateCount < 1) {
+      return res.status(401).json({
+        errorMessage: 'The post was not properly edited.',
+      });
+    }
+    return res.status(200).json({ message: 'Edited the post.' });
+  } catch (error) {
+    console.log(`${req.method} ${req.originalUrl} : ${error.message}`);
+    return res.status(400).json({
+      errorMessage: 'Failed to edit post.',
+    });
+  }
+}
+
+module.exports = { allPosts, addPost, deletePost, putPost };
