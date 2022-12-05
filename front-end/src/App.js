@@ -11,11 +11,12 @@ import CreatePost from './components/create post/CreatePost';
 import Profile from './components/profile/Profile';
 
 function App() {
+  
   return (
     <Router>
       <div className="App">
         <Navbar />
-        <div>
+        <div className='main'>
           <Routes>
             <Route exact path="/" element={<Home/>}/>
             <Route exact path="/search" element={<Search/>}/>
