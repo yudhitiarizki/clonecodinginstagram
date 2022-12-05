@@ -11,7 +11,7 @@ const commentSchema = Joi.object({
 const allComments = async (req, res) => {
     try {
       const commentsQuery = `
-        SELECT c.comment_id, c.user_id, u.name, c.comment, c.createdAt, c.updatedAt
+        SELECT c.comment_id, c.user_id, u.username, u.avatar, c.comment, c.createdAt, c.updatedAt
         FROM Comments AS c
         JOIN Users AS u
         ON c.user_id = u.user_id`;
