@@ -11,8 +11,7 @@ const jwt = require("jsonwebtoken");
 
 const postSchema = Joi.object({
     title: Joi.string().required(),
-    description: Joi.string().required(),
-    image: Joi.string().required(),
+    description: Joi.string().required()
   });
 
   const RE_TITLE = /^[a-zA-Z0-9\s\S]{1,40}$/;
@@ -22,9 +21,10 @@ const postSchema = Joi.object({
 const allPosts = async (req, res) => {
     try {
         const likes = await Likes.findAll();
+        const comments = await Comments.findAll();
   
         const postsQuery = `
-                  SELECT p.post_id, u.user_id, u.name, p.title, p.description, p.image, p.createdAt, p.updatedAt
+                  SELECT p.post_id, u.user_id, u.username, p.title, p.description, u.avatar, p.image, p.createdAt, p.updatedAt
                   FROM Posts AS p
                   JOIN Users AS u
                   ON p.user_id = u.user_id
@@ -38,6 +38,7 @@ const allPosts = async (req, res) => {
           return {
             ...post,
             likes: likes.filter((like) => like.post_id === post.post_id).length,
+            comments: comments.filter((comment) => comment.post_id === post.post_id).length,
           };
         });
         posts.sort((a, b) => b.createdAt - a.createdAt);
@@ -60,7 +61,9 @@ const addPost = async (req, res) => {
           });
         }
   
-        const { title, description, image } = resultSchema.value;
+        const { title, description } = resultSchema.value;
+
+        let image = req.protocol + '://' + req.get('host') + "/public/uploads/" + req.file.filename;
 
         const cookie = req.cookies;
         const Userlogin = jwt.decode(cookie.refreshToken);
@@ -129,12 +132,11 @@ const putPost = async (req, res) => {
     }
 
     const post_id  = req.params.post_id;
-    const { title, description, image } = resultSchema.value;
+    const { title, description } = resultSchema.value;
+    let image = req.protocol + '://' + req.get('host') + "/public/uploads/" + req.file.filename;
     const cookie = req.cookies;
     const Userlogin = jwt.decode(cookie.refreshToken);
     const user_id = Userlogin.user_id;
-
-    console.log(post_id, user_id)
 
     if(!title.match(RE_TITLE) || title.match(RE_HTML_ERROR)){
       return res.status(412).json({
