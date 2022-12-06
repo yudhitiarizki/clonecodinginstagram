@@ -1,19 +1,15 @@
 .home {
     display: flex;
     background-color: var(--ig-background);
-    /* margin-left: 225px; */
     width: 100vw;
     max-width: 1118px;
 }
 
 .middle-section{
-    /* background-color: red; */
     margin-top: 30px;
     width: 472px;
     margin-left: 140px;
     margin-right: 15px;
-    /* flex: 0.7; */
-    /* max-width: 510px; */
 }
 
 .stories{
@@ -62,7 +58,6 @@
 
 .card>img{
     max-width: 470px;
-    /* border-radius: 10px; */
 }
 
 .btn-group{

@@ -1,34 +1,43 @@
-// import { Button } from "bootstrap";
-import React, { useState } from "react";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import React from "react";
+import { Button } from "react-bootstrap";
+import './CreatePost.css';
 
 const CreatePost = () => {
-    const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
     return (
-        <div>
-            <h1>Create a Post!</h1>
-            <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
-            </Button>
+        <div className="modals">
+            {/* 520x475 */}
+            <div className="modal">
+                <div className="modal-header">
+                    <p>Create new post</p>
+                </div>
+                <div className="modal-body">
+                    <p> Drag photos and videos here </p>
+                    <Button variant="primary">Select from computer</Button>
+                    <button type="button" className="btn btn-primary">Select</button>
+                </div>
+            </div>
 
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+            <div className="create-post">
+                <div className="create-post-header">
+                    <p>Create new post</p>
+                    <Button variant="primary">Share</Button>
+                </div>
+                <div className="create-post-body">
+                    <div className="create-post-image">
+                        <p> Drag photos and videos here </p>
+                        <input className="form-control" id="content" placeholder="Image URL" />
+                    </div>
+                    <div className="create-post-content">
+                        <div className="user-info">
+                            <img className="avatar" alt="" src="" />
+                            <h5>username</h5>
+                        </div>
+                        <input className="form-control" id="content" placeholder="Write a caption..." />
+                    </div>
+                </div>
+
+            </div>
         </div>
     )
 }

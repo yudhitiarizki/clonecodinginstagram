@@ -1,12 +1,9 @@
-.App {
+.app{
   display: flex;
-  height: 100vh;
-  padding: 0 5px;
-  min-width: 250px;
 }
 
 .main{
-  margin-left: 230px;
+  margin-left: 245px;
 }
 
 body{

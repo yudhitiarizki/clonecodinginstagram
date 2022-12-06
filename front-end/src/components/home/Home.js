@@ -20,7 +20,6 @@ const Home = () => {
                     
                 </div>
 
-
                 <div className="posts">
                     {posts.map((post, index) => (
 

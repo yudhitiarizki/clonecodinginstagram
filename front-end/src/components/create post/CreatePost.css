@@ -1,0 +1,80 @@
+.modals{
+    display: flex;
+    margin: 50px 0;
+}
+
+.modal {
+    border-radius: 5px;
+    border: 1px solid var(--ig-border);
+    background-color: white;
+    margin-left: 50px;
+    max-height: 520px;
+    width: 475px;
+}
+
+.modal-header {
+    text-align: center;
+    height: 46px;
+    border-bottom: 1px solid var(--ig-border);
+}
+
+.modal-body {
+    height: 474px;
+    text-align: center;
+    padding: 30% 0;
+}
+
+.modal-body>p {
+    font-size: x-large;
+}
+
+.create-post {
+    border-radius: 5px;
+    border: 1px solid var(--ig-border);
+    background-color: white;
+    margin-left: 50px;
+    max-height: 520px;
+    width: 475px;
+}
+
+
+.create-post-header {
+    text-align: center;
+    height: 46px;
+    border-bottom: 1px solid var(--ig-border);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+.create-post-body{
+    display: flex;
+}
+
+.create-post-image {
+    height: 474px;
+    text-align: center;
+    padding: 30% 0;
+    width: 475px;
+    border-right: 1px solid var(--ig-border);
+}
+
+.create-post-image>p {
+    font-size: x-large;
+}
+
+.create-post-image>input {
+    border:none;
+    outline: none;
+}
+
+.create-post-content{
+    width: 340px;
+    padding: 20% 0;
+}
+
+.create-post-content>input{
+    border: none;
+    outline: none;
+    height: 168px;
+}
