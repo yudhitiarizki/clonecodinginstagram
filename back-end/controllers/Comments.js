@@ -66,9 +66,7 @@ const addComments = async (req, res) => {
   
         const { post_id } = req.params;
         const { comment } = resultSchema.value;
-        const cookie = req.cookies;
-        const Userlogin = jwt.decode(cookie.refreshToken);
-        const user_id = Userlogin.user_id;
+        const { user_id } = res.locals.user;
   
         await Comments.create({ post_id, user_id, comment });
         return res.status(201).json({ message: 'You wrote a comment.' });
@@ -91,9 +89,7 @@ const putComments = async (req, res) => {
   
         const { comment_id } = req.params;
         const { comment } = resultSchema.value;
-        const cookie = req.cookies;
-        const Userlogin = jwt.decode(cookie.refreshToken);
-        const user_id = Userlogin.user_id;
+        const { user_id } = res.locals.user;
   
         const isExist = await Comments.findByPk(comment_id);
         if (!isExist) {

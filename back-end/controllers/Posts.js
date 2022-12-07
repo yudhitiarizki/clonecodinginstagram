@@ -65,9 +65,7 @@ const addPost = async (req, res) => {
 
         let image = req.protocol + '://' + req.get('host') + "/public/uploads/" + req.file.filename;
 
-        const cookie = req.cookies;
-        const Userlogin = jwt.decode(cookie.refreshToken);
-        const user_id = Userlogin.user_id;
+        const { user_id } = res.locals.user;
 
         if(!title.match(RE_TITLE) || title.match(RE_HTML_ERROR)){
           return res.status(412).json({
@@ -125,6 +123,7 @@ const deletePost = async (req, res) => {
 const putPost = async (req, res) => {
   try {
     const resultSchema = postSchema.validate(req.body);
+
     if (resultSchema.error) {
       return res.status(412).json({
         errorMessage: 'The data format is incorrect.',
@@ -134,9 +133,8 @@ const putPost = async (req, res) => {
     const post_id  = req.params.post_id;
     const { title, description } = resultSchema.value;
     let image = req.protocol + '://' + req.get('host') + "/public/uploads/" + req.file.filename;
-    const cookie = req.cookies;
-    const Userlogin = jwt.decode(cookie.refreshToken);
-    const user_id = Userlogin.user_id;
+    
+    const { user_id } = res.locals.user;
 
     if(!title.match(RE_TITLE) || title.match(RE_HTML_ERROR)){
       return res.status(412).json({

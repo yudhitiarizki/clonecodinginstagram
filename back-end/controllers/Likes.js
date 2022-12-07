@@ -7,9 +7,7 @@ const likePost = async (req, res) => {
     try {
         const { post_id } = req.params;
 
-        const cookie = req.cookies;
-        const Userlogin = jwt.decode(cookie.refreshToken);
-        const user_id = Userlogin.user_id;
+        const { user_id } = res.locals.user;
   
         const isExist = await Posts.findByPk(post_id);
   
