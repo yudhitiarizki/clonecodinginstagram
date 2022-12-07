@@ -1,7 +1,7 @@
 import api from '../api';
 
 const getAllPosts = ()=>{
-    return api.get('/posts')
+    return api.get('/')
 }
 
 const createPost = data => {
