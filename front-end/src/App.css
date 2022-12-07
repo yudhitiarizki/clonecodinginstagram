@@ -4,6 +4,7 @@
 
 .main{
   margin-left: 245px;
+  background-color: var(--ig-background);
 }
 
 body{

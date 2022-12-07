@@ -1,44 +1,49 @@
-import React from "react";
-import { Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { EmojiSmile } from "react-bootstrap-icons";
 import './CreatePost.css';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const CreatePost = () => {
+    const [show, setShow] = useState(false);
 
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     return (
-        <div className="modals">
-            {/* 520x475 */}
-            <div className="modal">
-                <div className="modal-header">
-                    <p>Create new post</p>
-                </div>
-                <div className="modal-body">
-                    <p> Drag photos and videos here </p>
-                    <Button variant="primary">Select from computer</Button>
-                    <button type="button" className="btn btn-primary">Select</button>
-                </div>
-            </div>
-
-            <div className="create-post">
-                <div className="create-post-header">
-                    <p>Create new post</p>
-                    <Button variant="primary">Share</Button>
-                </div>
-                <div className="create-post-body">
-                    <div className="create-post-image">
-                        <p> Drag photos and videos here </p>
-                        <input className="form-control" id="content" placeholder="Image URL" />
+        <>
+            <Button variant="primary" onClick={handleShow}>
+                Create
+            </Button>
+            <Modal show={show} className="modals" onHide={handleClose}>
+                <div className="create-post">
+                    <div className="create-post-header">
+                        <h5>Create new post</h5>
+                        <h6 type="button">Share</h6>
                     </div>
-                    <div className="create-post-content">
-                        <div className="user-info">
-                            <img className="avatar" alt="" src="" />
-                            <h5>username</h5>
+                    <div className="create-post-body">
+                        <div className="create-post-image">
+                            <p> Add a photo here </p>
+                            <input className="form" id="content" placeholder="Image URL" />
                         </div>
-                        <input className="form-control" id="content" placeholder="Write a caption..." />
+                        <div className="create-post-content">
+                            <div className="user-info">
+                                <h6><img className="avatar" alt="" src="/public/default_pfp.svg" />username</h6>
+                            </div>
+                            <textarea className="form" id="content" placeholder="Write a caption..." />
+                            <div className="emoticounter">
+                                <EmojiSmile type="button" className="add-emoticon" />
+                                <p>Counter</p>
+                            </div>
+                            <div className="settings">
+                                <p className="">Add location</p>
+                                <p className="">Accessibility</p>
+                                <p className="">Advanced settings</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-            </div>
-        </div>
+            </Modal>
+        </>
     )
 }
 

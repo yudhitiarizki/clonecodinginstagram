@@ -17,43 +17,41 @@ const Home = () => {
         <div className="home">
             <div className="middle-section">
                 <div className="stories">
-                    
+
                 </div>
 
                 <div className="posts">
                     {posts.map((post, index) => (
 
-                        <div className="card">
-                            <div className="card-header">
+                        <div className="post" key={index}>
+                            <div className="post-header">
                                 <div className="user-info">
                                     <img className="avatar" alt="" src={post.avatar} />
-                                    <h5>{post.username}</h5>
+                                    <h6>{post.username}</h6>
                                 </div>
-                                <ThreeDots className="post-more" />
+                                <ThreeDots type="button" className="post-more" />
                             </div>
                             <img src={post.image} className="card-img-top" alt="..." />
-                            <div className="btn-group" role="group" aria-label="First group">
+                            <div className="button-group">
                                 <div className="left">
                                     <Heart type="button" className="icon" />
-                                    <Chat type="button" className="icon" />
-                                    <Send type="button" className="icon" />
+                                    <Chat type="button" className="icon-chat" />
+                                    <Send type="button" className="icon-send" />
                                 </div>
-                                <Bookmark type="button" className="icon" />
+                                <Bookmark type="button" className="icon-save" />
                             </div>
-                            <div className="card-body">
-                                <h4>{post.numlikes}{" "}likes</h4>
-                                <h4 className="username">{post.username}</h4>
-                                <p className="post-content">{post.content}</p>
-                                <p className="view-comments">View all {post.numcomments} comments</p>
+                            <div className="post-body">
+                                <h6>{post.numlikes}{" "}likes</h6>
+                                <p className="post-content"><span className="username">{post.username}</span>{" "}{post.content}</p>
+                                <p type="button" className="view-comments">View all {post.numcomments} comments</p>
                                 <p className="post-time"><small className="text-muted">{post.createdAt}</small></p>
                             </div>
-                            <div className="card-footer">
-
-                                <div className="user-info">
+                            <div className="post-footer">
+                                <div className="comment-group">
                                     <EmojiSmile className="add-emoticon" />
-                                    <input className="form-control" id="comment" placeholder="Add a comment..." />
+                                    <input type="text" className="comment-form" placeholder="Add a comment..." />
                                 </div>
-                                <h4 type="button" className="add-comment">Post</h4>
+                                <h5 type="button" className="add-comment">Post</h5>
                             </div>
                         </div>
 

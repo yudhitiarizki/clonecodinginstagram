@@ -6,15 +6,16 @@
 }
 
 /* tengah ini emang off */
-/* .navbarOption:hover {
-    background-color: grey;
+.navbarOption:hover {
+    background-color: var(--ig-background);
     border-radius: 30px;
-} */
+}
 
 .nav-icon{
     font-size: 35px;
     padding: 5px;
     margin: 5px 20px 20px 0px;
+    color: black;
     /* background-color: rgb(146, 203, 230); */
 }
 
@@ -22,5 +23,7 @@
     font-weight: 400;
     font-size: 18px;
     margin-right: 20px;
-    /* background-color: greenyellow; */
+    color: black;
+    /* text-decoration: inherit; */
+        /* background-color: greenyellow; */
 }
