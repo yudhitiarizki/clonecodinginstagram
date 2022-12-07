@@ -12,7 +12,6 @@ module.exports = async (req, res, next) => {
       });
     }
 
-
     const { user_id } = jwt.verify(cookies, process.env.REFRESH_TOKEN_SECRET);
     const user = await Users.findByPk(user_id);
 
