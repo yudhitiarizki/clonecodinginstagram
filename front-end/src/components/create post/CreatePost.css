@@ -1,0 +1,118 @@
+.modals {
+    display: flex;
+    margin: 50px 0;
+}
+
+/* .modal {
+    border-radius: 5px;
+    border: 1px solid var(--ig-border);
+    background-color: white;
+    margin-left: 50px;
+    max-height: 520px;
+    width: 475px;
+}
+
+.modal-header {
+    text-align: center;
+    height: 46px;
+    border-bottom: 1px solid var(--ig-border);
+}
+
+.modal-body {
+    height: 474px;
+    text-align: center;
+    padding: 30% 0;
+}
+
+.modal-body>p {
+    font-size: x-large;
+} */
+
+.create-post {
+    border-radius: 10px;
+    border: 1px solid var(--ig-border);
+    background-color: white;
+    margin-left: 50px;
+    height: 520px;
+    width: 815px;
+}
+
+.create-post-header {
+    text-align: center;
+    height: 46px;
+    border-bottom: 1px solid var(--ig-border);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+}
+
+.create-post-header>h5 {
+    transform: translateX(305px);
+    font-size: 17px;
+}
+
+.create-post-header>h6 {
+    color: var(--ig-button);
+}
+
+.create-post-body {
+    display: flex;
+}
+
+.create-post-image {
+    height: 475px;
+    text-align: center;
+    padding: 20% 0;
+    width: 475px;
+    border-right: 1px solid var(--ig-border);
+}
+
+.create-post-image>p {
+    font-size: x-large;
+}
+
+.create-post-image>input {
+    border: none;
+    /* outline: none; */
+    width: 300px;
+}
+
+.create-post-content {
+    width: auto;
+}
+
+.user-info {
+    margin-top: 15px;
+}
+
+.create-post-content>textarea {
+    margin-left: 15px;
+    border: none;
+    outline: none;
+    height: 180px;
+    width: 300px;
+}
+
+.emoticounter {
+    display: flex;
+    justify-content: space-between;
+    color: var(--ig-text);
+    margin-left: 15px;
+    border-bottom: 1px solid var(--ig-border);
+}
+
+.emojicounter>p {
+    font-size: 8px;
+}
+
+.settings {
+    margin-left: 15px;
+    color: var(--ig-text);
+    font-weight: 100px;
+}
+
+.settings>p {
+    padding-bottom: 10px;
+    margin-top: 10px;
+    border-bottom: 1px solid var(--ig-border);
+}
