@@ -1,5 +1,5 @@
 import UserService from "../../services/PostService";
-import { FETCH_POSTS } from "./types";
+import { CREATE_POSTS, FETCH_POSTS } from "./types";
 
 export const fetchPosts = () => async dispatch => {
     try {
@@ -7,6 +7,19 @@ export const fetchPosts = () => async dispatch => {
 
         dispatch({
             type: FETCH_POSTS,
+            payload: res.data,
+        });
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export const addPosts = (data) => async dispatch => {
+    try {
+        const res = await UserService.createPost();
+
+        dispatch({
+            type: CREATE_POSTS,
             payload: res.data,
         });
     } catch (err) {

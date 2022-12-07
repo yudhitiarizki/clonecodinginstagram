@@ -13,4 +13,6 @@ const postReducer = (posts = initialState, action) => {
     }
 };
 
+
+
 export default postReducer;

@@ -10,6 +10,7 @@ import Notifs from './components/notifs/Notifs';
 import CreatePost from './components/create post/CreatePost';
 import Profile from './components/profile/Profile';
 import More from './components/more/More';
+import Login from './components/login/Login';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route exact path="/create" element={<CreatePost />} />
             <Route exact path="/profile" element={<Profile />} />
             <Route exact path="/more" element={<More />} />
+            <Route exact path="/login" element={<Login />} />
           </Routes>
         </div>
       </div>
