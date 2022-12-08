@@ -16,13 +16,14 @@ export const fetchPosts = () => async dispatch => {
 
 export const addPosts = (data) => async dispatch => {
     try {
-        const res = await UserService.createPost();
+        const res = await UserService.createPost(data);
 
         dispatch({
             type: CREATE_POSTS,
             payload: res.data,
         });
+        return Promise.resolve(res.data);
     } catch (err) {
-        console.log(err);
+        return Promise.reject(err);
     }
 }
