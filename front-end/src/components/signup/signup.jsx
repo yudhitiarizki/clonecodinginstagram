@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css"
 import "./signup.css"
+import { Link } from "react-router-dom";
 
 const Signup = ()=>{
     return(
@@ -45,9 +46,8 @@ const Signup = ()=>{
                     </div>
                 </form>
             </div>
-            
             <div class="align-items-center box justify-content-center mt-2 m-auto pt-4 row">
-                <p>Have an account? <a class="signup">Log in</a></p>
+                <p>Have an account? <Link to="/login"><span class="signup">Log in</span></Link></p>
             </div>
         </div>
     )

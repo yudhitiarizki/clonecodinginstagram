@@ -2,10 +2,10 @@ import React from 'react';
 import '../App.css';
 import Signup from '../components/signup/signup';
 
-function Signuppage() {
+function SignupPage() {
   return (
           <Signup />
   );
 }
 
-export default Signuppage;
+export default SignupPage;
