@@ -154,7 +154,7 @@ input:not(:placeholder-shown) {
   font-weight: 600;
 }
 
-a {
+span {
     text-decoration: none;
 }
 

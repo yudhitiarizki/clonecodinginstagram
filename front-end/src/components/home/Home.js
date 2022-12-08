@@ -7,7 +7,7 @@ import './Home.css';
 
 
 const Home = () => {
-    const posts = useSelector(state => state.posts)
+    const posts = useSelector(state => state.posts);
     const dispatch = useDispatch();
 
     useEffect(() => {
