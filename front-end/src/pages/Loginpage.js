@@ -6,15 +6,14 @@ import Login from '../components/login/Login';
 function LoginPage() {
   let isAuth = false;
 
-  
+
   const token = Cookies.get('accessToken');
   if (token !== undefined || token !== null) {
     isAuth = true;
   }
 
-
   return (
-          <Login isAuth={isAuth}/>
+    <Login isAuth={isAuth} />
   );
 }
 

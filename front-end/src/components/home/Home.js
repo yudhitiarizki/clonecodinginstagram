@@ -1,12 +1,52 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Bookmark, Chat, EmojiSmile, Heart, Send, ThreeDots } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { fetchPosts } from "../../redux/actions/posts";
 import SwitchAcc from "../switchaccount/SwitchAcc";
 import './Home.css';
-
+import axios from 'axios';
+import jwt_decode from "jwt-decode";
 
 const Home = () => {
+    const [token, setToken] = useState('');
+    const [expire, setExpire] = useState('');
+    const history = useNavigate();
+    useEffect(() => {
+        refreshToken();
+    }, []);
+
+    const refreshToken = async () => {
+        try {
+            const response = await axios.get('http://localhost:3000/token');
+            console.log('res', response)
+            setToken(response.data.accessToken);
+            const decoded = jwt_decode(response.data.accessToken);
+            setExpire(decoded.exp);
+        } catch (error) {
+            if (error.response) {
+                console.log('error refresh', error)
+                history("/");
+            }
+        }
+    }
+
+    const axiosJWT = axios.create();
+
+    axiosJWT.interceptors.request.use(async (config) => {
+        const currentDate = new Date();
+        if (expire * 1000 < currentDate.getTime()) {
+            const response = await axios.get('http://localhost:3000/token');
+            config.headers.Authorization = `Bearer ${response.data.accessToken}`;
+            setToken(response.data.accessToken);
+            const decoded = jwt_decode(response.data.accessToken);
+            setExpire(decoded.exp);
+        }
+        return config;
+    }, (error) => {
+        return Promise.reject(error);
+    });
+
     const posts = useSelector(state => state.posts);
     const dispatch = useDispatch();
 
