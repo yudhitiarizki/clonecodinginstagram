@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Bookmark, Chat, EmojiSmile, Heart, Send, ThreeDots } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../../redux/actions/posts";
+import SwitchAcc from "../switchaccount/SwitchAcc";
 import './Home.css';
 
 
@@ -33,7 +34,7 @@ const Home = () => {
                             </div>
                             <img src={post.image} className="card-img-top" alt="..." />
                             <div className="button-group">
-                                <div className="left">
+                                <div className="left-buttons">
                                     <Heart type="button" className="icon" />
                                     <Chat type="button" className="icon-chat" />
                                     <Send type="button" className="icon-send" />
@@ -49,7 +50,7 @@ const Home = () => {
                             <div className="post-footer">
                                 <div className="comment-group">
                                     <EmojiSmile className="add-emoticon" />
-                                    <input type="text" className="comment-form" placeholder="Add a comment..." />
+                                    <input className="comment-form" placeholder="Add a comment..." />
                                 </div>
                                 <h5 type="button" className="add-comment">Post</h5>
                             </div>
@@ -60,8 +61,10 @@ const Home = () => {
 
             </div>
             <div className="right-section">
-                <h4>Switch Account</h4>
-                <h4>Suggestions</h4>
+                <div>
+                    <SwitchAcc />
+                </div>
+
             </div>
         </div>
     )

@@ -2,10 +2,10 @@ import React from 'react';
 import '../App.css';
 import Login from '../components/login/Login';
 
-function Loginpage() {
+function LoginPage() {
   return (
           <Login />
   );
 }
 
-export default Loginpage;
+export default LoginPage;

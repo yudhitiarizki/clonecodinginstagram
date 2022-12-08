@@ -3,7 +3,7 @@
     background-color: var(--ig-background);
     width: 100vw;
     max-width: 1118px;
-    margin-top: 25px;
+    padding-top: 25px;
 }
 
 .middle-section {
@@ -54,6 +54,7 @@
     width: 35px;
     height: 35px;
     margin-right: 10px;
+    margin-bottom: 10px;
     border-radius: 100%;
     border: 1px solid var(--ig-border);
 }
@@ -108,7 +109,8 @@
     margin: 5px 10px 0px 10px;
 }
 
-.left {
+.left-buttons {
+    display: flex;
     margin-right: 20px;
 }
 
@@ -131,6 +133,7 @@
 }
 
 .add-emoticon {
+    margin-top: 10px;
     margin-bottom: 5px;
     font-size: 20px;
 }
@@ -139,20 +142,28 @@
     margin-right: 15px;
 }
 
+.comment-group{
+    display: flex;
+    /* height: 80px; */
+}
+
 .comment-group>input {
     margin-left: 15px;
     font-size: 15px;
     border: none;
     outline: none;
+    background-color: white;
 }
 
 .add-comment{
+    margin-top: 10px;
     margin-right: 10px;
     font-size: 15px;
     color: var(--ig-button);
 }
 
 .right-section {
+    padding-top: 40px;
     min-width: auto;
     margin-left: 15px;
     margin-right: 50px;

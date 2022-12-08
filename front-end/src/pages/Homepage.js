@@ -3,9 +3,9 @@ import '../App.css';
 import Navibar from '../components/navigation/Navibar';
 import Home from '../components/home/Home';
 
-function Homepage() {
+function HomePage() {
   return (
-      <div className='Homepage'>
+      <div className='HomePage'>
         <Navibar />
         <div className='main'>
           <Home />
@@ -14,4 +14,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default HomePage;
