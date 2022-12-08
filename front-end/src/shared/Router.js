@@ -9,6 +9,7 @@ import Profile from "../components/profile/Profile";
 import Search from "../components/search/Search";
 import Homepage from "../pages/Homepage";
 import Loginpage from "../pages/Loginpage";
+import Signuppage from "../pages/Signuppage";
 
 const Router = () => {
   return (
@@ -23,6 +24,7 @@ const Router = () => {
         <Route path="/create" element={<CreatePost />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/more" element={<More />} />
+        <Route path="/signup" element={<Signuppage />} />
       </Routes>
     </BrowserRouter>
   );
